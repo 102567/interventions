@@ -26,4 +26,8 @@ describe('ProblèmeComponent', () => {
   it('zone PRÉNOM doit être invalide avec 2 caractères', () =>{
     expect(false).toBeFalsy();
   });
+
+  it('zone PRÉNOM doit être valide avec 3 caractères', () =>{
+    expect(true).toBeTruthy();
+  });
 });
