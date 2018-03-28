@@ -8,7 +8,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { ProblèmeComponent } from './problème/problème.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 @NgModule({
   declarations: [

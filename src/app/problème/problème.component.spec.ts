@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProblèmeComponent } from './problème.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FormBuilder } from '@angular/forms';
+
+
 
 describe('ProblèmeComponent', () => {
   let component: ProblèmeComponent;
@@ -8,7 +12,9 @@ describe('ProblèmeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProblèmeComponent ]
+      imports:[AngularFontAwesomeModule],
+      declarations: [ ProblèmeComponent ],
+      providers:[FormBuilder]
     })
     .compileComponents();
   }));
