@@ -46,4 +46,12 @@ describe('ProblèmeComponent', () => {
     zone.setValue('a'.repeat(200))
     expect(zone.valid).toBeTruthy();
   });
+
+  it('zone PRÉNOM doit être invalide avec aucun caractères', () =>{
+    let errors = {};
+    let zone = component.problemeForm.get('prenom');
+    zone.setValue('a'.repeat(0))
+    errors = zone.errors || {};
+    expect(errors['minlength']).toBeTruthy();
+  });
 });
