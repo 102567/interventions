@@ -25,9 +25,9 @@ describe('ProblèmeComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+   it('should create', () => {
+     expect(component).toBeTruthy();
+   });
 
   it('zone PRÉNOM doit être invalide avec 2 caractères', () =>{
     let zone = component.problemeForm.controls['prenom'];
@@ -50,8 +50,8 @@ describe('ProblèmeComponent', () => {
   it('zone PRÉNOM doit être invalide avec aucun caractères', () =>{
     let errors = {};
     let zone = component.problemeForm.get('prenom');
-    zone.setValue('a'.repeat(0))
+    zone.setValue('');
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeTruthy();
+    expect(errors['required']).toBeTruthy();
   });
 });
