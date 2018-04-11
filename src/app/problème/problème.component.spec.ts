@@ -70,7 +70,7 @@ describe('ProblèmeComponent', () => {
   it('zone PRÉNOM doit être valide avec 1 caractère et 2 espaces', () =>{
     let errors = {};
     let zone = component.problemeForm.get('prenom');
-    zone.setValue('a'.repeat(1));
+    zone.setValue('a'.repeat(1),''.repeat(2));
     errors = zone.errors || {};
     expect(errors['minlength']).toBeTruthy();
   });
