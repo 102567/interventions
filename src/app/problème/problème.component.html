@@ -16,18 +16,18 @@
             id="prenomId"
             type="text"
             placeholder="Prénom (Obligatoire)"
-            formControlName="prenom"
-            [ngClass]="{'is-invalid' : (problemeForm.get('prenom').touched ||
-            problemeForm.get('prenom').dirty) &&
-            !problemeForm.get('prenom').valid,
-            'is-valid' : (problemeForm.get('prenom').touched ||
-            problemeForm.get('prenom').dirty) &&
-            problemeForm.get('prenom').valid }"
+            formControlName="caractere"
+            [ngClass]="{'is-invalid' : (problemeForm.get('caractere').touched ||
+            problemeForm.get('caractere').dirty) &&
+            !problemeForm.get('caractere').errors.longueurMinimum,
+            'is-valid' : (problemeForm.get('caractere').touched ||
+            problemeForm.get('caractere').dirty) &&
+            problemeForm.get('caractere').errors.longueurMinimum }"
             />
-            <span class="form-text" *ngIf="(problemeForm.get('prenom').touched ||
-                problemeForm.get('prenom').dirty) &&
-                problemeForm.get('prenom').errors">
-                <span *ngIf="problemeForm.get('prenom').errors.minlength">
+            <span class="form-text" *ngIf="(problemeForm.get('caractere').touched ||
+                problemeForm.get('caractere').dirty) &&
+                problemeForm.get('caractere').errors">
+                <span *ngIf="!problemeForm.get('caractere').errors.longueurMinimum">
                     <small class="text-muted">
                         Indiquer au moins 3 caractères
                     </small>
