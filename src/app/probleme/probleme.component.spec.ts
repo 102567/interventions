@@ -1,26 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProblèmeComponent } from './problème.component';
+import { problemeComponent } from './probleme.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 
 
-describe('ProblèmeComponent', () => {
-  let component: ProblèmeComponent;
-  let fixture: ComponentFixture<ProblèmeComponent>;
+describe('problemeComponent', () => {
+  let component: problemeComponent;
+  let fixture: ComponentFixture<problemeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports:[AngularFontAwesomeModule,ReactiveFormsModule],
-      declarations: [ ProblèmeComponent ],
+      declarations: [ problemeComponent ],
       providers:[FormBuilder]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProblèmeComponent);
+    fixture = TestBed.createComponent(problemeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

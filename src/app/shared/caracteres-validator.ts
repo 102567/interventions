@@ -1,21 +1,13 @@
 import { ValidatorFn, AbstractControl } from "@angular/forms";
 
-export class nombreCaractereValidator{
-    static sansEspace(): ValidatorFn {
+export class VerifierCaracteresValidator {
+    static longueurValide(min: number): ValidatorFn {
         return (c: AbstractControl): { [key: string]: boolean } | null => {
-            if (c.value.trim().length > 0){
-                return { 'sansEspace': true};
+            if(c.value == null || c.value.trim().length < min || c.value == '') {
+                return { 'valide': false }
+            } else {
+                return { 'valide': true }
             }
-            return { 'sansEspace': false};
-        };
-    }
-
-    static longueurMinimum(min: number): ValidatorFn {
-        return (c: AbstractControl): { [key: string]: boolean } | null => {
-            if (c.value.trim().length >= min){
-                return { 'longueurMinimum': true};
-            }
-            return { 'longueurMinimum': false};
         };
     }
 }
