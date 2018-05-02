@@ -1,39 +1,39 @@
 import { nombreCaractereValidator} from "./caracteres-validator";
 import { AbstractControl } from "@angular/forms";
 
-describe('sanEspace Validator', () => {
+describe('longueurValide Validator', () => {
     it('Invalide avec une chaîne de caractère vide', () => {
         let control = { value: '' };
-        let validator = nombreCaractereValidator.sansEspace();
+        let validator = nombreCaractereValidator.sansEspaces();
         let result = validator(control as AbstractControl);
-        expect(result['sansEspace']).toBe(false);
+        expect(result['sansEspaces']).toBe(false);
     });
 
     it('Invalide avec 10 espaces', () => {
         let control = { value: ''.repeat(10) };
-        let validator = nombreCaractereValidator.sansEspace();
+        let validator = nombreCaractereValidator.sansEspaces();
         let result = validator(control as AbstractControl);
-        expect(result['sansEspace']).toBe(false);
+        expect(result['sansEspaces']).toBe(false);
     });
 
     it('Valide avec 1 phrase et des mots', () => {
         let control = { value: 'Bonjour à tous' };
-        let validator = nombreCaractereValidator.sansEspace();
+        let validator = nombreCaractereValidator.sansEspaces();
         let result = validator(control as AbstractControl);
-        expect(result['sansEspace']).toBe(true);
+        expect(result == null);
     });
 
     it('Valide avec 3 espace des mots et 3 espaces', () => {
         let control = { value: '   test   ' };
-        let validator = nombreCaractereValidator.sansEspace();
+        let validator = nombreCaractereValidator.sansEspaces();
         let result = validator(control as AbstractControl);
-        expect(result['sansEspace']).toBe(true);
+        expect(result == null);
     });
 
     
 });
 
-describe('longueurMinimum', () =>{
+describe('longueurMinimum Validator', () =>{
     it('Invalide avec 1 espace et 2 caractères', () => {
         let control = { value: ' yy' };
         let validator = nombreCaractereValidator.longueurMinimum(3);
@@ -52,13 +52,13 @@ describe('longueurMinimum', () =>{
         let control = { value: '   J’aime Angular' };
         let validator = nombreCaractereValidator.longueurMinimum(3);
         let result = validator(control as AbstractControl);
-        expect(result['longueurMinimum']).toBe(true);
+        expect(result == null);
     });
 
     it('Valide avec 5 espace et 5 caractères', () => {
         let control = { value: '     J’aime Angular     ' };
-        let validator = nombreCaractereValidator.longueurMinimum(3);
+        let validator = nombreCaractereValidator.longueurMinimum(5);
         let result = validator(control as AbstractControl);
-        expect(result['longueurMinimum']).toBe(true);
+        expect(result == null);
     });
 });

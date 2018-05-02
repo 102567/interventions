@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { problemeComponent } from './probleme.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { TypeProblemeService } from './typeprobleme.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -12,9 +14,9 @@ describe('problemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[AngularFontAwesomeModule,ReactiveFormsModule],
+      imports:[AngularFontAwesomeModule,ReactiveFormsModule,HttpClientModule],
       declarations: [ problemeComponent ],
-      providers:[FormBuilder]
+      providers:[FormBuilder,TypeProblemeService]
     })
     .compileComponents();
   }));
@@ -83,5 +85,29 @@ describe('problemeComponent', () => {
     zone.setValue('a'.repeat(1),' '.repeat(2));
     errors = zone.errors || {};
     expect(errors['longeurMinimum']).toBeFalsy();
+  });
+
+  it('Zone Téléphone est désactivé quand ne pas notifier', () => {
+    component.gestionNotification('pasNotification');
+    let zone = component.problemeForm.get('telephone');
+    expect( zone.status ).toEqual('DISABLED')
+  });
+
+  it('Zone Téléphone est vide quand ne pas ne pas notifier', () => {
+    component.gestionNotification('pasNotification');
+    let zone = component.problemeForm.get('telephone');
+    expect( zone.value ).toBeNull();
+  });
+
+  it('Zone Adresse Courriel est désactivé quand ne pas notifier', () => {
+    component.gestionNotification('pasNotification');
+    let zone = component.problemeForm.get('addresseCourrielGroup.courriel')
+    expect(zone.status).toEqual('DISABLED');
+  });
+
+  it('Zone Confirmer Courriel est désactivé quand ne pas notifier', () => {
+    component.gestionNotification('pasNotification');
+    let zone = component.problemeForm.get('addresseCourrielGroup.courrielConfirmation')
+    expect(zone.status).toEqual('DISABLED');
   });
 });
