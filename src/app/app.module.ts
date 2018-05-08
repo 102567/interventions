@@ -10,7 +10,7 @@ import { problemeComponent } from './probleme/probleme.component';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TypeProblemeData } from './probleme/typeProbleme-data';
 import { TypeProblemeService } from './probleme/typeprobleme.service';
 
@@ -23,7 +23,7 @@ import { TypeProblemeService } from './probleme/typeprobleme.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    InMemoryWebApiModule .forRoot(TypeProblemeData, { delay: 1000}),
+    HttpClientInMemoryWebApiModule .forRoot(TypeProblemeData, { delay: 1000}),
     AppRoutingModule,
     AngularFontAwesomeModule,
     HttpClientModule,
