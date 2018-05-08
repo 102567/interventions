@@ -1,6 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { problemeComponent } from './probleme.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TypeProblemeService } from './typeprobleme.service';
