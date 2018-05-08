@@ -13,12 +13,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TypeProblemeData } from './probleme/typeProbleme-data';
 import { TypeProblemeService } from './probleme/typeprobleme.service';
+import { NveauComponent } from './probleme/nveau.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AcceuilComponent,
-    problemeComponent
+    problemeComponent,
+    NveauComponent
   ],
   imports: [
     BrowserModule,
