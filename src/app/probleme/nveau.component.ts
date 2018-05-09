@@ -1,9 +1,11 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ITypeProbleme } from './typeprobleme';
 import { nombreCaractereValidator } from '../shared/caracteres-validator';
 import { emailMatcherValidator } from '../shared/emailMatcher-validator';
 import { TypeProblemeService } from './typeprobleme.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'inter-nveau',
@@ -37,6 +39,7 @@ export class NveauComponent implements OnInit {
     this.problemeForm.get('notification').valueChanges
     .subscribe(value => this.gestionNotification(value));
   }
+
   gestionNotification(typeProbleme : String ): void{
     const adresseCourrielGroupControl = this.problemeForm.get('adresseCourrielGroup');
     const adresseCourrielControl = this.problemeForm.get('adresseCourrielGroup.courriel');
@@ -56,16 +59,16 @@ export class NveauComponent implements OnInit {
     telephoneControl.disable();
 
     if(typeProbleme === 'parCourriel'){
-      adresseCourrielControl.enable();
       adresseCourrielGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielConfirmation()])]);
+      adresseCourrielControl.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
+      adresseCourrielControl.enable();
+      courrielConfirmationControl.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
       courrielConfirmationControl.enable();
-      adresseCourrielControl.setValidators([Validators.required,  Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
-      courrielConfirmationControl.setValidators([Validators.required,  Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
       
     }else{
       if(typeProbleme === 'parMessageTexte'){
+        telephoneControl.setValidators([Validators.required,  Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
         telephoneControl.enable();
-        telephoneControl.setValidators([Validators.required,  Validators.pattern('[0-9]+'), Validators.minLength(10),  Validators.maxLength(10)]);
       }
     }
 
