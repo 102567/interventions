@@ -29,7 +29,10 @@ export class NveauComponent implements OnInit {
         courriel: [{ value:'', disabled: true}],
         courrielConfirmation: [{ value:'', disabled: true}]
       }),
-      telephone: [{ value: '', disabled: true}]
+      telephone: [{ value: '', disabled: true}],
+      descriptionProbleme:['',[Validators.required, Validators.minLength(5)]],
+      noUnite:[''],
+      dateProbleme:{value:Date(), disabled:true}
     });
     
     this.typesProbleme.obtenirTypesProbleme()
@@ -41,6 +44,7 @@ export class NveauComponent implements OnInit {
   }
 
   gestionNotification(typeProbleme : String ): void{
+    
     const adresseCourrielGroupControl = this.problemeForm.get('adresseCourrielGroup');
     const adresseCourrielControl = this.problemeForm.get('adresseCourrielGroup.courriel');
     const courrielConfirmationControl = this.problemeForm.get('adresseCourrielGroup.courrielConfirmation');
@@ -67,10 +71,10 @@ export class NveauComponent implements OnInit {
       
     }else{
       if(typeProbleme === 'parMessageTexte'){
-        telephoneControl.setValidators([Validators.required,  Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]);
+        telephoneControl.setValidators([Validators.required,  Validators.pattern('[0-9]+'), Validators.minLength(10),  Validators.maxLength(10)]);
         telephoneControl.enable();
-      }
-    }
+       }
+    } 
 
     adresseCourrielGroupControl.updateValueAndValidity();
     adresseCourrielControl.updateValueAndValidity();
