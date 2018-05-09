@@ -10,22 +10,22 @@ export class AppPage {
   }
 
   setChampsValidesScenarioNominal() : void {
-    element(by.id('prenomProblemeId')).sendKeys('prenomProbleme');
-    element(by.id('nomProblemeId')).sendKeys('nomProbleme');
+    element(by.id('prenomId')).sendKeys('philippe');
+    element(by.id('nomId')).sendKeys('viau');
     // Sélectionner le X élément dans la zone de liste déroulante
-    element(by.id('noTypeProblemeId')).all(by.tagName('option')).get(2).click();
+    element(by.id('noProblemeId')).all(by.tagName('option')).get(2).click();
     // Cliquer sur le bouton radio voulu
     element.all(by.id('NotifiezMoiId')).get(0).click();
     element(by.id('descriptionProblemeId')).sendKeys('Problème entre la chaise et le clavier...');
    }
 
    setChampsValidesScenarioAlternatifParMessageTexte() : void {
-    element(by.id('prenomProblemeId')).clear();
-    element(by.id('prenomProblemeId')).sendKeys('philippe');
-    element(by.id('nomProblemeId')).clear();
-    element(by.id('nomProblemeId')).sendKeys('chevy');
+    element(by.id('prenomId')).clear();
+    element(by.id('prenomId')).sendKeys('philippe');
+    element(by.id('nomId')).clear();
+    element(by.id('nomId')).sendKeys('viau');
     // Sélectionner le X élément dans la zone de liste déroulante
-    element(by.id('noTypeProblemeId')).all(by.tagName('option')).get(2).click();
+    element(by.id('noProblemeId')).all(by.tagName('option')).get(2).click();
     // Cliquer sur le bouton radio voulu
     element.all(by.id('NotifiezMoiId')).get(2).click();
     element(by.id('telephoneId')).sendKeys('5141231234');

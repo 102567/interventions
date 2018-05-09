@@ -155,10 +155,10 @@
     formControlName = "courriel"
     [ngClass]="{'is-valid': (problemeForm.get('adresseCourrielGroup.courriel').touched ||
     problemeForm.get('adresseCourrielGroup.courriel').dirty) &&
-    problemeForm.get('courrielGroup.courriel').valid,
+    problemeForm.get('adresseCourrielGroup.courriel').valid,
     'is-invalid': (problemeForm.get('adresseCourrielGroup.courriel').touched ||
    problemeForm.get('adresseCourrielGroup.courriel').dirty) &&
-    !problemeForm.get('courrielGroup.courriel').valid }" />
+    !problemeForm.get('adresseCourrielGroup.courriel').valid }" />
     <span class="form-text" *ngIf="(problemeForm.get('adresseCourrielGroup.courriel').touched ||
     problemeForm.get('adresseCourrielGroup.courriel').dirty) &&
     (problemeForm.get('adresseCourrielGroup.courriel').errors ||
@@ -192,6 +192,7 @@
    problemeForm.get('adresseCourrielGroup.courrielConfirmation').dirty) &&
     !problemeForm.get('adresseCourrielGroup.courrielConfirmation').valid ||
    problemeForm.get('adresseCourrielGroup').errors?.match}" />
+
     <span class="form-text" *ngIf="(problemeForm.get('adresseCourrielGroup.courrielConfirmation').touched ||
     problemeForm.get('adresseCourrielGroup.courrielConfirmation').dirty) &&
     (problemeForm.get('adresseCourrielGroup.courrielConfirmation').errors ||
@@ -211,7 +212,7 @@
    </div>
    <!-- Zone de texte UNITÉ -->
    <div class="form-group row">          
-    <label for="noUniteId" class="col-md-2 col-form-label text-right">Unité :</label>
+    <label for="noUniteId" class="col-md-2 col-form-label text-right"># Unité :</label>
     <div class="col-md-10">
       <input class="form-control" 
       id="noUniteId" 
