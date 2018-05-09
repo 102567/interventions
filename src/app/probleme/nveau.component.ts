@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ITypeProbleme } from './typeprobleme';
 import { nombreCaractereValidator } from '../shared/caracteres-validator';
 import { emailMatcherValidator } from '../shared/emailMatcher-validator';
+import { TypeProblemeService } from './typeprobleme.service';
 
 @Component({
   selector: 'inter-nveau',
@@ -14,14 +15,14 @@ export class NveauComponent implements OnInit {
   typesProblemes: ITypeProbleme[];
   errorMessage: string;
   
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private typesProbleme: TypeProblemeService) { }
 
   ngOnInit() {
     this.problemeForm = this.fb.group({
       prenom: ['',[Validators.required,Validators.minLength(3), nombreCaractereValidator.longueurMinimum(3), nombreCaractereValidator.sansEspaces()]],
       nom: ['',[Validators.required, Validators.maxLength(50)]],
       noProbleme: ['', Validators.required],
-      appliquerNotifications: { value: 'pasNotification', disabled: false},
+      notification: { value: 'pasNotification', disabled: false},
       adresseCourrielGroup: this.fb.group({
         courriel: [{ value:'', disabled: true}],
         courrielConfirmation: [{ value:'', disabled: true}]
@@ -29,7 +30,11 @@ export class NveauComponent implements OnInit {
       telephone: [{ value: '', disabled: true}]
     });
     
-    this.problemeForm.get('appliquerNotifications').valueChanges
+    this.typesProbleme.obtenirTypesProbleme()
+     .subscribe(typ => this.typesProblemes = typ,
+                error => this.errorMessage = <any>error);
+
+    this.problemeForm.get('notification').valueChanges
     .subscribe(value => this.gestionNotification(value));
   }
   gestionNotification(typeProbleme : String ): void{
