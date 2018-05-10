@@ -9,31 +9,31 @@ describe('interventions App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to inter!');
+    expect(page.getParagraphText()).toEqual('Déclarer un problème');
   });
 
   it('doit activer le bouton sauvegarder avec champs valides scénario nominal', () => {
-    page.setChampsValidesScenarioNominal;
+    page.setChampsValidesScenarioNominal();
     expect(page.boutonSubmit().isEnabled()).toBe(true);
   });
 
   it('doit activer le bouton sauvegarder avec champs valides scénario alternatif Par message TEXTE', () => {
-    page.setChampsValidesScenarioAlternatifParMessageTexte;
+    page.setChampsValidesScenarioAlternatifParMessageTexte();
     expect(page.boutonSubmit().isEnabled()).toBe(true);
   });
 
   it('doit activer le bouton sauvegarder avec champs valides scénario alternatif Par courriel', () => {
-    page.setChampsValidesScenarioAlternatifParCourriel;
+    page.setChampsValidesScenarioAlternatifParCourriel();
     expect(page.boutonSubmit().isEnabled()).toBe(true);
   });
 
   it('zone descriptionProblème a une bordure rouge si le nombre de caractère est insuffisant', () => {
-    page.setZoneDescriptionProblemeCaractereInsuffisant;
+    page.setZoneDescriptionProblemeCaractereInsuffisant();
     expect(page.obtenirClasseZoneDescriptionProbleme()).toContain('is-invalid');
   });
 
   it('zone descriptionProblème a une bordure rouge si le nombre de caractère est insuffisant', () => {
-    page.setZoneDescriptionProblemeCaractereSuffisant;
+    page.setZoneDescriptionProblemeCaractereSuffisant();
     expect(page.obtenirClasseZoneDescriptionProbleme()).toContain('is-valid');
   });
 });
