@@ -7,7 +7,7 @@ import { ITypeProbleme } from './typeprobleme';
 
 @Injectable()
 export class TypeProblemeService {
-  private baseUrl= 'api/typesProblemes';
+  private baseUrl= 'https://interventionsslb.azurewebsites.net/api/Intervention';
 
   constructor( private _http: HttpClient) { }
 

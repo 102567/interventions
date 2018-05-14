@@ -8,9 +8,9 @@ import { NveauComponent } from './probleme/nveau.component';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TypeProblemeData } from './probleme/typeProbleme-data';
 import { TypeProblemeService } from './probleme/typeprobleme.service';
+import { ProblemeService } from './probleme/probleme.service';
 
 
 @NgModule({
@@ -23,7 +23,6 @@ import { TypeProblemeService } from './probleme/typeprobleme.service';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientInMemoryWebApiModule .forRoot(TypeProblemeData, { delay: 1000}),
     AppRoutingModule,
     AngularFontAwesomeModule,
     HttpClientModule,
@@ -31,7 +30,7 @@ import { TypeProblemeService } from './probleme/typeprobleme.service';
     
     
   ],
-  providers: [TypeProblemeService],
+  providers: [TypeProblemeService, ProblemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
