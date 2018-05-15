@@ -28,12 +28,12 @@ export class NveauComponent implements OnInit {
       prenom: ['',[Validators.required,Validators.minLength(3), nombreCaractereValidator.longueurMinimum(3), nombreCaractereValidator.sansEspaces()]],
       nom: ['',[Validators.required, Validators.maxLength(50)]],
       noProbleme: ['', Validators.required],
-      notification: { value: 'pasNotification', disabled: false},
+      notification: { value: 'pasNotifier', disabled: false},
       adresseCourrielGroup: this.fb.group({
-        courriel: [{ value:'', disabled: true}],
-        courrielConfirmation: [{ value:'', disabled: true}]
+        courriel: [{ value:null, disabled: true}],
+        courrielConfirmation: [{ value:null, disabled: true}]
       }),
-      telephone: [{ value: '', disabled: true}],
+      telephone: [{ value: null, disabled: true}],
       descriptionProbleme:['',[Validators.required, Validators.minLength(5)]],
       noUnite:[''],
       dateProbleme:{value:Date(), disabled:true}
@@ -92,12 +92,12 @@ export class NveauComponent implements OnInit {
          // Affecter les valeurs qui proviennent du fg le plus interne.
          this.probleme.prenom =  this.problemeForm.get('prenom').value;
          this.probleme.nom =  this.problemeForm.get('nom').value;
-         this.probleme.notypeProbleme =  this.problemeForm.get('noProbleme').value;
+         this.probleme.noProbleme =  this.problemeForm.get('noProbleme').value;
          this.probleme.courriel =  this.problemeForm.get('adresseCourrielGroup.courriel').value;
          this.probleme.courrielConfirmation =  this.problemeForm.get('adresseCourrielGroup.courrielConfirmation').value;
          this.probleme.telephone =  this.problemeForm.get('telephone').value;
          this.probleme.descriptionProbleme =  this.problemeForm.get('descriptionProbleme').value;
-          this.probleme.dateProbleme = new Date();
+         this.probleme.dateProbleme = new Date();
  
      
         this.problemeService.saveProbleme(this.probleme)
@@ -111,5 +111,6 @@ export class NveauComponent implements OnInit {
   onSaveComplete(): void {
     this.problemeForm.reset();  // Pour remettre Dirty à false.  Autrement le Route Guard va dire que le formulaire n'est pas sauvegardé
     this.messageSauvegarde = 'Votre demande a bien été sauvegardée.  Nous vous remercions.';
+    this.ngOnInit();
   } 
 }

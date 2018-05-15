@@ -1,8 +1,8 @@
 export interface IProbleme {
-    id: number,
+    Id: number,
     prenom: string,
     nom: string,
-    notypeProbleme?: number,
+    noProbleme?: number,
     notification: string,
     courriel: string,
     courrielConfirmation: string,

@@ -20,7 +20,7 @@ saveProbleme(probleme: IProbleme): Observable<IProbleme> {
   
   private createProbleme(probleme: IProbleme): Observable<IProbleme> {
 
-    probleme.id = undefined;
+    probleme.Id = undefined;
     return this._http.post(this.baseUrl, probleme)
         .do(data => console.log('createProbleme: ' + JSON.stringify(data)))
         .catch(this.handleError);
